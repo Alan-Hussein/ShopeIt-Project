@@ -16,7 +16,7 @@ function App() {
           <FavoriteContextProvider>
             <Routes>
               <Route path="/" element={<HomePage />} />
-              <Route path="/Products" element={<Products />} />
+              <Route path="/products" element={<Products />} />
               <Route path="/product/:id" element={<ProductDetails />} />
               <Route path="/favorites" element={<Favorites />} />
               <Route path="/cart" element={<Cart />} />

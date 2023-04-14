@@ -12,14 +12,20 @@ const useFetchCart = (urls) => {
         const response = await Promise.all(
           urls.map((url) => fetch(url).then((res) => res.json()))
         );
-        setData(response);
+        const updatedData = response.map((product) => ({
+          ...product,
+          quantity: 1,
+        }));
+        setData(updatedData);
       } catch (err) {
         setError(err);
       }
       setLoading(false);
     };
+
     fetchData();
   }, [urls]);
+  console.log(data);
   return { data, loading, error };
 };
 

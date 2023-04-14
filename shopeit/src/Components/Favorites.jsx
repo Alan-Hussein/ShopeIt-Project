@@ -3,12 +3,12 @@ import { FavoriteContext } from "../context/Favoritescontex";
 import ChildProduct from "./ChildProduct";
 import Header from "../Components/Header/Header";
 import useFetchFavorite from "../hooks/useFetchFavorite";
-import Error from "../Components/Error";
+// import Error from "../Components/Error";
 import Loading from "../Components/Loading";
 
 const Favorites = () => {
   const { urlFavorites } = useContext(FavoriteContext);
-  const { data, loading, error } = useFetchFavorite(urlFavorites);
+  const { data, loading,  } = useFetchFavorite(urlFavorites);
 
   // if (error) return <Error error={error} />;
   if (loading) return <Loading />;

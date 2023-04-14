@@ -198,3 +198,16 @@ button {
 .cancel {
   background-color: aliceblue !important;
 }
+.discount-code {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.discount-code input {
+  margin-top: 10px;
+  height: 30px;
+}
+.discount-code button {
+  padding: 5px;
+  border-radius: 5px;
+  background-color: gold;
+}

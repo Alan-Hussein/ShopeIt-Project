@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
+import useFetch from "../hooks/useFetch";
 export const CartContext = createContext();
 
 export const CartContextProvider = ({ children }) => {
@@ -11,11 +12,9 @@ export const CartContextProvider = ({ children }) => {
   const addCartIds = (id) => {
     setCartIds((prevState) => [...prevState, id]);
   };
-
   const deleteCartIds = (id) => {
     setCartIds(cartIds.filter((element) => element !== id));
   };
-
 
   return (
     <CartContext.Provider
@@ -24,5 +23,4 @@ export const CartContextProvider = ({ children }) => {
       {children}
     </CartContext.Provider>
   );
-  
 };

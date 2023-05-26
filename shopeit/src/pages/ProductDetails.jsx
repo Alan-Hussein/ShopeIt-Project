@@ -14,7 +14,7 @@ const ProductDetails = () => {
     `https://fakestoreapi.com/products/${id}`
   );
 
-  // if (error) return <Error error={error} />;
+  if (error) return <Error error={error.message} />;
   if (loading) return <Loading />;
   return (
     <>

@@ -211,3 +211,9 @@ button {
   border-radius: 5px;
   background-color: gold;
 }
+.cart-products{
+  margin: 50px;
+}
+.cart-product{
+  margin-top: 20px;
+}

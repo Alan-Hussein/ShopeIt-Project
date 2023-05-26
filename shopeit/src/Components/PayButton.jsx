@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import StripeCheckout from "react-stripe-checkout";
+import { CartContext } from "../context/Cartcontext";
 
 function PayButton() {
+  const { clearCart } = useContext(CartContext);
+
   const onToken = (token) => {
     console.log(token);
+    clearCart();
   };
-  
-  
+
   return (
     <>
       <StripeCheckout

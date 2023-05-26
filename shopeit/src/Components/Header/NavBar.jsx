@@ -11,7 +11,7 @@ function NavBar() {
         Products
       </Link>
       <Link className="a" to={"/favorites"}>
-        Favourites
+        Favorites
       </Link>
       <Link className="a" to={"/Cart"}>
         Cart

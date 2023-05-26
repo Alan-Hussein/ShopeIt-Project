@@ -6,24 +6,23 @@ import { CartContext } from "../context/Cartcontext";
 import useFetchCart from "../hooks/useFetchCart";
 import ChildCartProduct from "../Components/ChildCartProduct";
 import PayButton from "../Components/PayButton";
+
 const Cart = () => {
-  const { urlCart } = useContext(CartContext);
+  const { urlCart, cartIds } = useContext(CartContext);
   const { data, loading, error } = useFetchCart(urlCart);
   const [cartData, setCartData] = useState([]);
   const [orderTotal, setOrderTotal] = useState();
-
   const [discountCode, setDiscountCode] = useState("");
 
-  const applyDiscount = () => {
-    if (discountCode === "HYF") {
-      setOrderTotal((totalPrice * 0.41).toFixed(2));
-    } else {
-      setOrderTotal(totalPrice);
-    }
-  };
   useEffect(() => {
-    setCartData(data);
+    if (data) {
+      setCartData(data);
+    }
   }, [data]);
+
+  useEffect(() => {
+    setCartData([]);
+  }, [cartIds]);
 
   const updateQuantity = (id, quantity) => {
     setCartData((prevData) =>
@@ -31,6 +30,22 @@ const Cart = () => {
         product.id === id ? { ...product, quantity } : product
       )
     );
+  };
+
+  useEffect(() => {
+    applyDiscount();
+  }, [cartData]);
+
+  const applyDiscount = () => {
+    const totalPrice = cartData.reduce(
+      (acc, item) => acc + item.price * item.quantity,
+      0
+    );
+    if (discountCode === "HYF") {
+      setOrderTotal((totalPrice * 0.41).toFixed(2));
+    } else {
+      setOrderTotal(totalPrice.toFixed(2));
+    }
   };
 
   if (loading) return <Loading />;
@@ -43,10 +58,9 @@ const Cart = () => {
 
   return (
     <>
-      <Header page="Favourites" />
-      <h1>Cart</h1>
+      <Header page="Favorites" />
       <div className="cart-products">
-        {cartData.length !== 0 ? (
+        {cartData?.length !== 0 ? (
           <>
             {cartData.map((product, index) => (
               <div className="cart-product" key={index}>
@@ -62,16 +76,16 @@ const Cart = () => {
               <div className="discount-code">
                 <span>Do you have a discount code ?</span>
                 <br />
-                <input 
+                <input
                   type="text"
                   value={discountCode}
                   autoFocus
                   onChange={(event) => setDiscountCode(event.target.value)}
                 />
                 <button onClick={applyDiscount}>Apply</button>
-                <h4> total Price with discoun: {orderTotal}</h4>
+                <h4>Total Price with discount: {orderTotal}</h4>
               </div>
-              <PayButton  />
+              <PayButton />
             </div>
           </>
         ) : (

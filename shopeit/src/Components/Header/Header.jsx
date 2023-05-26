@@ -5,7 +5,7 @@ import NavBar from "./NavBar";
 
 function Header({ page }) {
   return (
-    <div className={page === "Favourites" ? "favoritesHeader" : "header"}>
+    <div className={page === "Favorites" ? "favoritesHeader" : "header"}>
       <Logo />
       <NavBar />
       <Cart />

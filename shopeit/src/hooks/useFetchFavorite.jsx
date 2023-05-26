@@ -6,6 +6,10 @@ const useFetchFavorite = (urls) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    if (typeof urls === "undefined") {
+      return;
+    }
+
     const fetchData = async () => {
       setLoading(true);
       try {
@@ -18,8 +22,10 @@ const useFetchFavorite = (urls) => {
       }
       setLoading(false);
     };
+
     fetchData();
   }, [urls]);
+
   return { data, loading, error };
 };
 

@@ -14,7 +14,7 @@ const Categories = ({ filterProducts }) => {
   return (
     <div className="categories">
       <Link to="/favorites" className="category">
-        <p>Favourites</p>
+        <p>Favorites</p>
       </Link>
       <Link to="/cart" className="category">
         <p>Cart</p>

@@ -1,25 +1,31 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { CartContext } from "../context/Cartcontext";
+
 function AddToCartButton({ product }) {
   const { id } = product;
   const { cartIds, addCartIds, deleteCartIds } = useContext(CartContext);
-  const [isInCart, setIsInCart] = useState(true);
+  const [isInCart, setIsInCart] = useState(false);
+
+  useEffect(() => {
+    setIsInCart(cartIds.includes(id));
+  }, [cartIds, id]);
+
   function toggleButton(id) {
     if (isInCart) {
-      addCartIds(id);
-      setIsInCart(false);
-    }
-    if (!isInCart) {
       deleteCartIds(id);
+      setIsInCart(false);
+    } else {
+      addCartIds(id);
       setIsInCart(true);
     }
   }
+
   return (
     <button
-      className={isInCart ? "add to cart" : "cancel"}
+      className={isInCart ? "cancel" : "add-to-cart"}
       onClick={() => toggleButton(id)}
     >
-      {isInCart ? "add to cart" : "cancel"}
+      {isInCart ? "Remove " : "Add to cart"}
     </button>
   );
 }

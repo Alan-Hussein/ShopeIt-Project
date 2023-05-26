@@ -6,6 +6,10 @@ const useFetchCart = (urls) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    if (typeof urls === "undefined") {
+      return;
+    }
+
     const fetchData = async () => {
       setLoading(true);
       try {
@@ -25,6 +29,7 @@ const useFetchCart = (urls) => {
 
     fetchData();
   }, [urls]);
+
   console.log(data);
   return { data, loading, error };
 };

@@ -3,7 +3,7 @@
 Shopeit is Ecommerce App to buy products online
 the app fetch the data of products and categories buttons from this API: https://fakestoreapi.com.
 
-Link to Shopit on netlify :https://alan-shopeit.netlify.app
+Link to Shopit on netlify :https://alan-shopeit-a.netlify.app
 
 ## Here is the Home Page
 

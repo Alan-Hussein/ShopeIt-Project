@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { FavoriteContext } from "../context/Favoritescontex";
-import ChildProduct from "./ChildProduct";
+import ChildProduct from "../Components/ChildProduct";
 import Header from "../Components/Header/Header";
 import useFetchFavorite from "../hooks/useFetchFavorite";
 import Error from "../Components/Error";

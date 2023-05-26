@@ -2,7 +2,7 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Products from "./pages/Products";
 import ProductDetails from "./pages/ProductDetails";
-import Favorites from "./Components/Favorites";
+import Favorites from "./pages/Favorites";
 import { FavoriteContextProvider } from "./context/Favoritescontex";
 import Cart from "../src/pages/Cart";
 import { CartContextProvider } from "./context/Cartcontext";
